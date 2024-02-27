@@ -1,36 +1,38 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+<!-- Include this inside the employees tab content -->
+<div class="container mt-4">
+    <h2>Employees</h2>
 
-{% block title %}Employee List{% endblock %}
+    <!-- Add Employee Form -->
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal">Add Employee</button>
 
-{% block content %}
-    <h2>Employee List</h2>
-    <table class="table">
+    <!-- Employee List Table -->
+    <table class="table mt-3">
         <thead>
             <tr>
                 <th>EmployeeID</th>
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Email</th>
-                <!-- Add other fields as needed -->
+                <!-- Add more columns as needed -->
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            {% for employee in employees %}
-                <tr>
-                    <td>{{ employee.EmployeeID }}</td>
-                    <td>{{ employee.FirstName }}</td>
-                    <td>{{ employee.LastName }}</td>
-                    <td>{{ employee.Email }}</td>
-                    <!-- Add other fields as needed -->
-                    <td>
-                        <a href="{{ url_for('employee_details', employee_id=employee.EmployeeID) }}" class="btn btn-info btn-sm">Details</a>
-                        <a href="{{ url_for('edit_employee', employee_id=employee.EmployeeID) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="{{ url_for('delete_employee', employee_id=employee.EmployeeID) }}" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-            {% endfor %}
+        <tbody id="employeeTableBody">
+            <!-- Employee data will be dynamically inserted here -->
         </tbody>
     </table>
-    <a href="{{ url_for('add_employee') }}" class="btn btn-primary">Add Employee</a>
-{% endblock %}
+</div>
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+    <!-- Add Employee Form will go here -->
+</div>
+<script src="employees.js"></script>
+</head>
+</html>
