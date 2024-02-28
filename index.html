@@ -5,22 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
 
     <div class="container mt-4">
-        <h1>Employee Management System</h1>
+        <h1 class="text-center mb-4">Employee Management System</h1>
         <ul class="nav nav-tabs" id="tabs">
             <li class="nav-item"><a class="nav-link active" id="employees-tab" data-toggle="tab" href="#employees">Employees</a></li>
-            <li class="nav-item"><a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin">Administrators</a></li>
         </ul>
         
         <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="employees">
-                <!-- Employee UI will go here -->
-            </div>
-            <div class="tab-pane fade" id="admin">
-                <!-- Admin UI will go here -->
+                <form action="process_form.php" method="post" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="EmployeeID">Employee ID:</label>
+                            <input type="text" class="form-control" name="EmployeeID" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="FirstName">First Name:</label>
+                            <input type="text" class="form-control" name="FirstName" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="LastName">Last Name:</label>
+                            <input type="text" class="form-control" name="LastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="DateOfBirth">Date of Birth:</label>
+                            <input type="date" class="form-control" name="DateOfBirth" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="Gender">Gender:</label>
+                            <select class="form-control" name="Gender" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="ContactNumber">Contact Number:</label>
+                            <input type="tel" class="form-control" name="ContactNumber" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Email">Email:</label>
+                            <input type="email" class="form-control" name="Email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="Address">Address:</label>
+                            <input type="text" class="form-control" name="Address" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="Department">Department:</label>
+                            <input type="text" class="form-control" name="Department" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="Position">Position:</label>
+                            <input type="text" class="form-control" name="Position" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="JoiningDate">Joining Date:</label>
+                            <input type="date" class="form-control" name="JoiningDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Salary">Salary:</label>
+                            <input type="number" class="form-control" name="Salary" step="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -33,3 +99,4 @@
 
 </body>
 </html>
+

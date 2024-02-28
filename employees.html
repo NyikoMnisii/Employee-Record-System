@@ -3,36 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees</title>
-<!-- Include this inside the employees tab content -->
-<div class="container mt-4">
-    <h2>Employees</h2>
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    <!-- Add Employee Form -->
-    <button class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal">Add Employee</button>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    <!-- Employee List Table -->
-    <table class="table mt-3">
-        <thead>
-            <tr>
-                <th>EmployeeID</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Email</th>
-                <!-- Add more columns as needed -->
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="employeeTableBody">
-            <!-- Employee data will be dynamically inserted here -->
-        </tbody>
-    </table>
-</div>
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-<!-- Add Employee Modal -->
-<div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-    <!-- Add Employee Form will go here -->
-</div>
-<script src="employees.js"></script>
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
+<body>
+    <h2>Employee List</h2>
+
+    <?php
+    // Assuming you have a MySQL connection established
+    $servername = "your_server_name";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch data from the database
+    $sql = "SELECT * FROM employees";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>Employee ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Gender</th><th>Contact Number</th><th>Email</th><th>Address</th><th>Department</th><th>Position</th><th>Joining Date</th><th>Salary</th></tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>{$row['EmployeeID']}</td><td>{$row['FirstName']}</td><td>{$row['LastName']}</td><td>{$row['DateOfBirth']}</td><td>{$row['Gender']}</td><td>{$row['ContactNumber']}</td><td>{$row['Email']}</td><td>{$row['Address']}</td><td>{$row['Department']}</td><td>{$row['Position']}</td><td>{$row['JoiningDate']}</td><td>{$row['Salary']}</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "No records found";
+    }
+
+    // Close connection
+    $conn->close();
+    ?>
+
+</body>
 </html>

@@ -1,8 +1,8 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block title %}Employee Details{% endblock %}
-
-{% block content %}
+<title> Details</title>
+<body>   \
     <h2>Employee Details</h2>
     <dl class="row">
         <dt class="col-sm-3">EmployeeID:</dt>
@@ -18,5 +18,6 @@
         <dd class="col-sm-9">{{ employee.Email }}</dd>
         <!-- Add other fields as needed -->
     </dl>
-    <a href="{{ url_for('employees') }}" class="btn btn-secondary">Back to List</a>
-{% endblock %}
+    <a href="employees.html" class="btn btn-secondary"><button> to List</button></a>
+</body>
+</html>
